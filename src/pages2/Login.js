@@ -17,6 +17,7 @@ const Login = () => {
         }
       );
       console.log(res.data);
+      localStorage.setItem('user', res.data.token)
       history.push('/user')
 
     } catch (error) {

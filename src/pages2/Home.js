@@ -31,10 +31,9 @@ const Home = () => {
 
     const Card = (id) => {
         localStorage.setItem('id', id)
-        history.push('/user')
-        // history.push('/product')
-
+        history.push('/product')
     }
+
     const AddToCart = (id) => {
         localStorage.setItem('id', id)
         history.push('/cart')
@@ -120,5 +119,3 @@ const Home = () => {
 }
 
 export default Home
-
-
