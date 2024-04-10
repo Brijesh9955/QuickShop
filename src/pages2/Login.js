@@ -16,7 +16,6 @@ const Login = () => {
           headers: { 'Content-Type': 'application/json' }
         }
       );
-      console.log(res.data);
       localStorage.setItem('user', res.data.token)
       history.push('/user')
 

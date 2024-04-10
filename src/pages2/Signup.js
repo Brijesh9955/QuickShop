@@ -9,8 +9,7 @@ const Signup = () => {
   const history = useHistory();
   const SignupUser = async (values) => {
     try {
-      let res = await axios.post('https://dummyjson.com/users/add', values)
-      console.log(res);
+      await axios.post('https://dummyjson.com/users/add', values)
       history.push('/login')
     }
     catch (error) {
@@ -38,7 +37,6 @@ const Signup = () => {
           email: '',
           password: '',
           phone: '',
-          // profilepic: '',
         }}
         validationSchema={SignupSchema}
         onSubmit={async (values) => {

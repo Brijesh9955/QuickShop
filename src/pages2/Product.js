@@ -18,7 +18,6 @@ const Product = () => {
         try {
             let id = localStorage.getItem('id')
             let res = await axios.get('https://dummyjson.com/products/' + id)
-            console.log(res.data);
             setData([res.data])
         }
         catch (error) {

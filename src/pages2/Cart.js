@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { FaAmazonPay , FaStar , FaStarHalfAlt, FaOpencart } from 'react-icons/fa';
+import { FaAmazonPay , FaStar , FaStarHalfAlt } from 'react-icons/fa';
 import { Col, Container, Row } from 'react-bootstrap';
 
 const Cart = () => {
@@ -12,7 +12,6 @@ const Cart = () => {
         try {
             let id = localStorage.getItem('id')
             let res = await axios.get('https://dummyjson.com/products/' + id)
-            console.log(res.data);
             setData([res.data])
         }
         catch (error) {

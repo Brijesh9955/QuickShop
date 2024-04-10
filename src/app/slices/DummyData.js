@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
-
-// useSelector
-// useDispatch
-
 export const DummyData = createSlice({
   name: 'DummyData',
   initialState: {
@@ -14,7 +9,6 @@ export const DummyData = createSlice({
   reducers: {
     addData: (state, action) => {
       state.data = [...state.data, ...action.payload]
-      console.log("state.data", state.data);
     },
     deleteData: (state, action) => {
         let copyData = [...state.data]

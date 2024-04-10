@@ -35,7 +35,6 @@ const User = () => {
     const remove = async (id) => {
         try {
             const res = await axios.delete('https://dummyjson.com/products/' + id)
-            console.log(res.data);
             dispatch(deleteData(id))
         }
         catch (error) {

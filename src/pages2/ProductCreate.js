@@ -52,12 +52,9 @@ const ProductCreate = () => {
     try {
       if (row === null) {
         let res = await axios.post('https://dummyjson.com/products/add', values);
-        console.log(res.data);
         dispatch(addData([res.data]))
       } else {
         let res = await axios.put(`https://dummyjson.com/products/`+ row , values);
-        console.log(res.data);
-        console.log(res.data.product);
         dispatch(addData([res.data]))
       }
       history.push('/');
