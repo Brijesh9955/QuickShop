@@ -13,15 +13,18 @@ import Cart from './pages2/Cart';
 import Signup from './pages2/Signup';
 import Login from './pages2/Login';
 import ProductCreate from './pages2/ProductCreate';
+import store from './app/store';
+import { Provider } from 'react-redux'
 
 function App() {
   return (
     <div className="App">
-      
-      <Router>
-        <Header />
-        <Switch>
-          
+
+      <Provider store={store}>
+        <Router>
+          <Header />
+          <Switch>
+
             <Route exact path="/">
               <Home />
             </Route>
@@ -45,9 +48,10 @@ function App() {
             <Route path="/user">
               <ProductCreate />
             </Route>
-            
-        </Switch>
-      </Router>
+
+          </Switch>
+        </Router>
+      </Provider>
 
     </div>
   );

@@ -7,26 +7,23 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 const Login = () => {
 
   const history = useHistory();
-  const LoginUser = async () => {
-    const staticPayload = {
-      email: "example@example.com",
-      password: "password123"
-    };
-  
+  const LoginUser = async (values) => {
     try {
       const res = await axios.post(
         'https://dummyjson.com/auth/login',
-        staticPayload,
+        values,
         {
           headers: { 'Content-Type': 'application/json' }
         }
       );
-      console.log(res);
+      console.log(res.data);
+      history.push('/user')
+
     } catch (error) {
       console.error("Error:", error.response.data.message);
     }
   };
-  
+
 
   const SignupSchema = Yup.object().shape({
     username: Yup.string().min(2, 'Too Short!').max(70, 'Too Long!').required('Enter Your username !'),

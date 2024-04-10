@@ -3,12 +3,17 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from 'axios';
+import { addData } from "../app/slices/DummyData";
+import { useDispatch } from "react-redux";
+
 
 const ProductCreate = () => {
-
+  
+  const dispatch = useDispatch()
   const history = useHistory()
   const [data, setData] = useState([])
   const [initialValues, setInitialValues] = useState([])
+
 
   // useEffect(() => {
   //   let token = localStorage.getItem('token')
@@ -17,10 +22,10 @@ const ProductCreate = () => {
   //   }
   // }, [])
 
-  const update = (id, a, b, c, d, e) => {
-    const copy = { fname: a, lname: b, contact: c, city: d, country: e }
-    setInitialValues(copy)
-  }
+  // const update = (id, a, b, c, d, e) => {
+  //   const copy = { fname: a, lname: b, contact: c, city: d, country: e }
+  //   setInitialValues(copy)
+  // }
 
   return (
     <div>
@@ -35,8 +40,9 @@ const ProductCreate = () => {
 
           try {
             let token = localStorage.getItem('token')
+            console.log(values);
             let res = await axios.post('https://dummyjson.com/products/add', values)
-            // setData([...data, res.data.data])
+            dispatch(addData([res.data]))
             console.log(res.data);
           }
           catch (error) {

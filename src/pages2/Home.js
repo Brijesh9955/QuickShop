@@ -5,16 +5,20 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Container, Row } from 'react-bootstrap';
 import Header from './Header';
+import { useDispatch, useSelector } from "react-redux";
+import { addData } from '../app/slices/DummyData';
+
 
 const Home = () => {
 
+    const dispatch = useDispatch()
+    const { data } = useSelector(state => state.DummyData)
     const history = useHistory()
-    const [data, setData] = useState([])
 
     const GetAllData = async () => {
         try {
             let res = await axios.get('https://dummyjson.com/products')
-            setData(res.data.products)
+            dispatch(addData([...res.data.products]))
         }
         catch (error) {
             console.log(error.response.data.message);
