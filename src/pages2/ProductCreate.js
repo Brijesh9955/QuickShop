@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form } from "formik";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { addData } from "../app/slices/DummyData";
 
 const ProductCreate = () => {
   const history = useHistory();
@@ -18,6 +20,7 @@ const ProductCreate = () => {
     category: ''
   });
   const [thumbnailFileName, setThumbnailFileName] = useState('');
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,9 +28,8 @@ const ProductCreate = () => {
       if (uid) {
         setRow(uid);
         try {
-          let res = await axios.get('https://dummyjson.com/products/' + uid);
+          let res = await axios.get('https://dummyjson.com/products/'+uid);
           setInitialValues(res.data);
-          // Set filename for display
           setThumbnailFileName(res.data.thumbnail ? res.data.thumbnail.name : '');
         } catch (error) {
           console.log(error.response.data.message);
@@ -51,10 +53,12 @@ const ProductCreate = () => {
       if (row === null) {
         let res = await axios.post('https://dummyjson.com/products/add', values);
         console.log(res.data);
+        dispatch(addData([res.data]))
       } else {
-        let res = await axios.patch(`https://dummyjson.com/products/`+ row , values);
+        let res = await axios.put(`https://dummyjson.com/products/`+ row , values);
         console.log(res.data);
         console.log(res.data.product);
+        dispatch(addData([res.data]))
       }
       history.push('/');
     } catch (error) {
