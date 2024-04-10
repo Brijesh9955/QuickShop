@@ -31,8 +31,8 @@ const Header = () => {
                                 </Navbar.Collapse>
                             </div>
                             <div className="col-2 d-flex justify-content-end align-items-center">
-                                <a href="/user" className='pe-3'>Create</a>
-                                <a href="/signup">User</a>
+                                <a href="/create" className='pe-3'>Create</a>
+                                <a href="/user">User</a>
                             </div>
                         </Row>
                     </Container>

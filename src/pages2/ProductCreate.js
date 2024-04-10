@@ -44,6 +44,7 @@ const ProductCreate = () => {
             let res = await axios.post('https://dummyjson.com/products/add', values)
             dispatch(addData([res.data]))
             console.log(res.data);
+            history.push('/') 
           }
           catch (error) {
             console.log(error.response.data.message);

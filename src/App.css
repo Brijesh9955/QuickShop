@@ -453,6 +453,7 @@
     transition: .5s all;
 }
 
-.div-2{
-    
+.bg-data, .bg-data *{
+    background-color: #dadada;
+    border-radius: 10px;
 }

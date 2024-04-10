@@ -20,7 +20,8 @@ export const DummyData = createSlice({
         let copyData = [...state.data]
         copyData.splice(action.payload, 1)
         state.data = copyData
-      }
+    },
+
   }
 })
 

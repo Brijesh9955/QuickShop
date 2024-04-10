@@ -31,7 +31,9 @@ const Home = () => {
 
     const Card = (id) => {
         localStorage.setItem('id', id)
-        history.push('/product')
+        history.push('/user')
+        // history.push('/product')
+
     }
     const AddToCart = (id) => {
         localStorage.setItem('id', id)
